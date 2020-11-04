@@ -31,6 +31,43 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// mailgun dependencies
+const nodemailer = require("nodemailer");
+const mg = require("nodemailer-mailgun-transport");
+
+// auth with out mailgun API key and domain
+const auth = {
+  auth: {
+    api_key: process.env.MAILGUN_API_KEY,
+    domain: process.env.EMAIL_DOMAIN
+  }
+};
+
+// create a mailer 
+const nodemailerMailgun = nodemailer.createTransport(mg(auth));
+
+// SEND MAIL
+const user = {
+  email: "tasfia.dev@gmail.com",
+  name: "Tas",
+  age: "23"
+};
+
+nodemailerMailgun.sendMail({
+  from: "no-reply@example.com",
+  to: user.email,
+  subject: "Hey Tas, you nice, keep going",
+  template: {
+    name: "email.handlebars",
+    engine: "handlebars",
+    context: user
+  }
+}).then(info => {
+  console.log("Response: " + info);
+}).catch(err => {
+  console.log("Error: " + err)
+})
+
 require('./routes/index.js')(app);
 require('./routes/pets.js')(app);
 
