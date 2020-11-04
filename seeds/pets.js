@@ -15,7 +15,7 @@ module.exports = [
         "birthday": "2008-11-11",
         "favoriteFood": "Liver",
         "picUrl": "http://www.gpamass.com/s/img/emotionheader713297504.jpg",
-        "price": 9.99,
+        "price": 10.99,
         "picUrlSq": "https://www.collinsdictionary.com/images/thumb/greyhound_21701074_250.jpg",
         "description": "Fido is a dog and he's a good dog who loves to play and hang out with his owners. He also likes to nap and enjoys eating dog food"
     },
@@ -25,7 +25,7 @@ module.exports = [
         "birthday": "2008-11-11",
         "favoriteFood": "Beef",
         "picUrl": "https://www.pocketpitbull.com/wp-content/uploads/2017/03/blue-staffy-pitbull-370x208.jpg",
-        "price": 9.99,
+        "price": 11.99,
         "picUrlSq": "http://www.vrcpitbull.com/wp-content/uploads/2011/02/VAMPVAMP%E2%80%A2.jpg",
         "description": "Rolfe is a dog and he's a good dog who loves to play and hang out with his owners. He also likes to nap and enjoys eating dog food"
     },
@@ -34,6 +34,7 @@ module.exports = [
         "species": "West Highland White Terrier",
         "birthday": "2008-11-11",
         "favoriteFood": "Fish",
+        "price": 12.99,
         "picUrl": "http://www.dogbreedslist.info/uploads/allimg/dog-pictures/West-Highland-White-Terrier-2.jpg",
         "picUrlSq": "https://upload.wikimedia.org/wikipedia/commons/2/2c/West_Highland_White_Terrier_Krakow.jpg",
         "description": "Princhi is a dog and he's a good dog who loves to play and hang out with his owners. He also likes to nap and enjoys eating dog food"
@@ -54,7 +55,7 @@ module.exports = [
         "birthday": "2008-11-11",
         "favoriteFood": "Pork",
         "picUrl": "http://via.placeholder.com/350x150",
-        "price": 9.99,
+        "price": 10.99,
         "picUrlSq": "http://via.placeholder.com/250x250",
         "description": "Santa's Little Helper is a dog and he's a good dog who loves to play and hang out with his owners. He also likes to nap and enjoys eating dog food"
     },
@@ -74,7 +75,7 @@ module.exports = [
         "birthday": "2008-11-11",
         "favoriteFood": "Dragon",
         "picUrl": "http://via.placeholder.com/350x150",
-        "price": 9.99,
+        "price": 15.99,
         "picUrlSq": "http://via.placeholder.com/250x250",
         "description": "Bubba is a dog and he's a good dog who loves to play and hang out with his owners. He also likes to nap and enjoys eating dog food"
     }

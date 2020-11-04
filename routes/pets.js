@@ -1,6 +1,8 @@
 // MODELS
 const Pet = require('../models/pet');
 
+const mailer = require("../utils/mailer");
+
 // PET ROUTES
 module.exports = (app) => {
 
@@ -73,6 +75,36 @@ module.exports = (app) => {
       { page: page } 
     ).then((results) => {
       res.render("pets-index", { pets: results.docs, pagesCount: results.pages, currentPage: page, term: req.query.term });
+    });
+  });
+
+  app.post("/pets/:id/purchase", (req, res) => {
+    // console.log(`purchase body: ${req}`);
+    var stripe = require("stripe")(process.env.PRIVATE_STRIPE_API_KEY);
+
+    // token is created using Checkout or Elements!
+    // get the payment token ID submitted by the form
+    const token = req.body.stripeToken; // using express
+
+    // req.body.petId can become null through seeding,
+    // this way we'll insure we use a non-null value
+    let petId = req.body.petId || req.params.id;
+
+    Pet.findById(petId).exec((err, pet) => {
+      if (err) {
+        console.log("Error: " + err);
+        res.redirect(`/pets/${req.params.id}`);
+      }
+      const charge = stripe.charges
+        .create({
+          amount: pet.price * 100,
+          currency: "usd",
+          description: "Example charge",
+          source: token,
+        })
+        .then(() => {
+          res.redirect(`/pets/${req.params.id}`);
+        });
     })
-  })
+  });
 }
