@@ -26,7 +26,7 @@ module.exports.sendMail = (user, req, res) => {
   nodemailerMailgun
     .sendMail({
       from: "no-reply@example.com",
-      to: "user.email",
+      to: user.email,
       subject: "Hey Tas, you nice, keep going",
       template: {
         name: "email.handlebars",
@@ -37,12 +37,12 @@ module.exports.sendMail = (user, req, res) => {
     // once mail is sent, redirect to the purchased pet's page
     .then((info) => {
       console.log("Response: " + info);
-      res.redirect(`/pets/${req.params.id}`);
+      // res.redirect(`/pets/${req.params.id}`);
     })
     // catch error and redirect to the purchased pet's page
     .catch((err) => {
       console.log("Error: " + err);
-      res.redirect(`/pets/${req.params.id}`);
+      // res.redirect(`/pets/${req.params.id}`);
     });
 }
 

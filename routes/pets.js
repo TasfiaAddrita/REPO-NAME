@@ -102,9 +102,19 @@ module.exports = (app) => {
           description: "Example charge",
           source: token,
         })
-        .then(() => {
+        .then((charge) => {
+          // convert the amount back to dollars for ease in displaying in the template
+          const user = {
+            email: req.body.stripeEmail,
+            amount: charge.amount / 100,
+            petName: pet.name
+          };
+          // call mail handler to manage sending emails
+          mailer.sendMail(user, req, res)
           res.redirect(`/pets/${req.params.id}`);
-        });
+        }).catch(err => {
+          console.log("Error: " + err);
+        })
     })
   });
 }
