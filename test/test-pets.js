@@ -29,9 +29,11 @@ describe('Pets', ()  => {
   it('should index ALL pets on / GET', (done) => {
     chai.request(server)
         .get('/')
+        .set("content-type", "application/json")
         .end((err, res) => {
           res.should.have.status(200);
-          res.should.be.html;
+          res.should.be.json;
+          res.body.should.be.a("object");
           done();
         });
   });
@@ -54,7 +56,9 @@ describe('Pets', ()  => {
         .send(fido)
         .end((err, res) => {
           res.should.have.status(200);
-          res.should.be.html
+          // res.should.be.html;
+          res.should.be.json
+          res.body.should.be.a("object");
           done();
         });
   });

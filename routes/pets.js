@@ -81,6 +81,7 @@ module.exports = (app) => {
   app.get("/pets/:id", (req, res) => {
     Pet.findById(req.params.id).exec((err, pet) => {
       res.render("pets-show", { pet: pet });
+      // res.json({ pet: pet });
     });
   });
 
@@ -88,6 +89,7 @@ module.exports = (app) => {
   app.get("/pets/:id/edit", (req, res) => {
     Pet.findById(req.params.id).exec((err, pet) => {
       res.render("pets-edit", { pet: pet });
+      // res.json({ pet: pet });
     });
   });
 
@@ -95,7 +97,8 @@ module.exports = (app) => {
   app.put("/pets/:id", (req, res) => {
     Pet.findByIdAndUpdate(req.params.id, req.body)
       .then((pet) => {
-        res.redirect(`/pets/${pet._id}`);
+        // res.redirect(`/pets/${pet._id}`);
+        res.json({ pet: pet });
       })
       .catch((err) => {
         // Handle Errors
